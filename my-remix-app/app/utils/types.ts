@@ -80,3 +80,17 @@ export type TSingleNetWorthCard = {
   name: string;
   sum: string | number;
 };
+
+export type TSingleTransactionHistoryCard = {
+  id: string;
+  date: string;
+  time: string;
+  details: {
+    action: string;
+    sum: string | number;
+    transaction: string;
+  };
+  txnFee: string | number;
+  currency: string;
+  money: string | number;
+};

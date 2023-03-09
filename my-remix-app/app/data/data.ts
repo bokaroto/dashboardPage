@@ -193,3 +193,32 @@ export const netWorthData = [
     sum: '234.43',
   },
 ];
+
+export const transactionHistoryData = [
+  {
+    id: '0xcm32f3flkn3',
+    date: '18.03.2022.',
+    time: '2:35 PM',
+    details: {
+      action: 'sent',
+      sum: '-234.43',
+      transaction: '0xcm32f3flkn3',
+    },
+    txnFee: '0.00034',
+    currency: 'ETH',
+    money: '0.577',
+  },
+  {
+    id: '0xcm34533fdlkn3',
+    date: '03.12.2021.',
+    time: '12:53 AM',
+    details: {
+      action: 'called',
+      sum: '+0.324232',
+      transaction: '0xcm32f3flkn3',
+    },
+    txnFee: '0.00034',
+    currency: 'ETH',
+    money: '0.577',
+  },
+];

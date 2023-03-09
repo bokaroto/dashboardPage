@@ -45,7 +45,9 @@ const WidgetContent = ({ data }: any) => {
 };
 
 export default function WidgetWraperCard({ data }: any) {
-  const [activeItemIds, setActiveItemIds] = useState<number[]>([]);
+  const allToBeOpenAsDefault = data.items.map((obj: any) => obj.id);
+  const [activeItemIds, setActiveItemIds] =
+    useState<number[]>(allToBeOpenAsDefault);
 
   const toggleAccordian = (id: number) => {
     if (activeItemIds.includes(id)) {

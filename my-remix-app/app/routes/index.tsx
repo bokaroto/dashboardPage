@@ -20,6 +20,7 @@ import WidgetWraperCard from '~/components/Cards/WidgetCards/WidgetWraperCard';
 import { widgeRewardsData, widgeValueData, widgeTokentData } from '~/data/data';
 import NetWorthWidget from '~/components/NetWorthWidget';
 import { NavLink } from '@remix-run/react';
+import TransactionHistory from '~/components/TransactionHistory';
 
 const navigation = [
   {
@@ -284,6 +285,9 @@ export default function Example() {
             </div>
             <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <WidgetWraperCard data={widgeValueData} />
+            </div>
+            <div className="py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <TransactionHistory />
             </div>
           </main>
         </div>
