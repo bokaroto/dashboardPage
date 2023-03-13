@@ -21,6 +21,8 @@ import { widgeRewardsData, widgeValueData, widgeTokentData } from '~/data/data';
 import NetWorthWidget from '~/components/NetWorthWidget';
 import { NavLink } from '@remix-run/react';
 import TransactionHistory from '~/components/TransactionHistory';
+// import Grafikon from '~/components/Grafikon';
+import DoughnutChartModule from '~/components/DoughnutChartModule';
 
 const navigation = [
   {
@@ -59,6 +61,56 @@ const accordianItems = [
   },
 ];
 
+const data = [10, 20, 30, 15, 5, 20];
+const labels = [
+  'Label 1',
+  'Label 2',
+  'Label 3',
+  'Label 4',
+  'Label 5',
+  'Label 6',
+];
+const backgroundColors = [
+  '#FF6384',
+  '#36A2EB',
+  '#FFCE56',
+  '#4BC0C0',
+  '#9966FF',
+  '#FF9900',
+];
+const title = 'My Doughnut Chart';
+const label = 'Label';
+const value = 'Value';
+const date = '2022-01-01';
+const country = 'USA';
+
+const labelData = ['test', 'test1', 'test2', 'test3'];
+
+const dataData = [1, 5, 2, 12];
+
+const currencyData = 'EUR';
+
+const dataGrafikon = {
+  labels: ['Red', 'Blue', 'Yellow'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [12, 19, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
 export default function Example() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -93,7 +145,7 @@ export default function Example() {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
+                <Dialog.Panel className="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-gray-800">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-300"
@@ -103,29 +155,29 @@ export default function Example() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute top-0 right-0 -mr-12 pt-2">
+                    <div className="absolute top-0 right-0 pt-2 -mr-12">
                       <button
                         type="button"
-                        className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        className="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
                         <XMarkIcon
-                          className="h-6 w-6 text-white"
+                          className="w-6 h-6 text-white"
                           aria-hidden="true"
                         />
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="flex flex-shrink-0 items-center px-4">
+                  <div className="flex items-center flex-shrink-0 px-4">
                     <img
-                      className="h-8 w-auto"
+                      className="w-auto h-8"
                       src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                       alt="Your Company"
                     />
                   </div>
-                  <div className="mt-5 h-0 flex-1 overflow-y-auto">
-                    <nav className="space-y-1 px-2">
+                  <div className="flex-1 h-0 mt-5 overflow-y-auto">
+                    <nav className="px-2 space-y-1">
                       {navigation.map((item) => (
                         <NavLink
                           key={item.name}
@@ -153,7 +205,7 @@ export default function Example() {
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
-              <div className="w-14 flex-shrink-0" aria-hidden="true">
+              <div className="flex-shrink-0 w-14" aria-hidden="true">
                 {/* Dummy element to force sidebar to shrink to fit close icon */}
               </div>
             </div>
@@ -163,12 +215,12 @@ export default function Example() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex min-h-0 flex-1 flex-col bg-secondary">
-            <div className="flex h-16 flex-shrink-0 items-center px-4">
+          <div className="flex flex-col flex-1 min-h-0 bg-secondary">
+            <div className="flex items-center flex-shrink-0 h-16 px-4">
               <p className="text-textPrimary">CRYPTO</p>
             </div>
-            <div className="flex flex-1 flex-col overflow-y-auto">
-              <nav className="flex-1 space-y-1 px-2 py-4">
+            <div className="flex flex-col flex-1 overflow-y-auto">
+              <nav className="flex-1 px-2 py-4 space-y-1">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -197,25 +249,25 @@ export default function Example() {
           </div>
         </div>
         <div className="flex flex-col lg:pl-64">
-          <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 border-b border-tertiary">
+          <div className="sticky top-0 z-10 flex flex-shrink-0 h-16 border-b border-tertiary">
             <button
               type="button"
-              className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-myBlue lg:hidden"
+              className="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-myBlue lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
+              <Bars3BottomLeftIcon className="w-6 h-6" aria-hidden="true" />
             </button>
-            <div className="flex flex-1 justify-end px-4 bg-primary">
-              <div className="ml-4 flex items-center lg:ml-6">
+            <div className="flex justify-end flex-1 px-4 bg-primary">
+              <div className="flex items-center ml-4 lg:ml-6">
                 <ToggleWithIcon />
                 <button
                   type="button"
-                  className="rounded-full bg-tertiary p-1 text-textSecondary hover:text-textPrimary focus:outline-none focus:ring-2 focus:ring-myBlue focus:ring-offset-2"
+                  className="p-1 rounded-full bg-tertiary text-textSecondary hover:text-textPrimary focus:outline-none focus:ring-2 focus:ring-myBlue focus:ring-offset-2"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon
-                    className="h-6 w-6 text-textSecondary"
+                    className="w-6 h-6 text-textSecondary"
                     aria-hidden="true"
                   />
                 </button>
@@ -223,10 +275,10 @@ export default function Example() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-myBlue focus:ring-offset-2">
+                    <Menu.Button className="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-myBlue focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-full"
+                        className="w-8 h-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
@@ -241,7 +293,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
@@ -265,28 +317,88 @@ export default function Example() {
           </div>
 
           <main className="flex-1 bg-primary">
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <MiniNavigation />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <Tabs />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <NetWorthWidget />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <Wallet />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <WidgetWraperCard data={widgeRewardsData} />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <WidgetWraperCard data={widgeTokentData} />
             </div>
-            <div className="pt-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <WidgetWraperCard data={widgeValueData} />
             </div>
-            <div className="py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <Grafikon />
+            </div> */}
+            {/* <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="w-1/2 pr-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+              <div className="w-1/2 pl-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+            </div>
+
+            <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="w-1/2 pr-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+              <div className="w-1/2 pl-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+            </div>
+
+            <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="w-1/2 pr-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+              <div className="w-1/2 pl-4">
+                <DoughnutChartModule
+                  title="Sales per Brand"
+                  labels={labelData}
+                  data={dataData}
+                  currency={currencyData}
+                />
+              </div>
+            </div> */}
+
+            <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <TransactionHistory />
             </div>
           </main>

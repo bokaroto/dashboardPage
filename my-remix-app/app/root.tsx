@@ -20,14 +20,31 @@ export const meta: MetaFunction = () => ({
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
 export default function App() {
+  // return (
+  //   <html lang="en" className="h-full bg-red-500">
+  //     <head>
+  //       <Meta />
+  //       <Links />
+  //     </head>
+  //     <body className="h-full">
+  //       <h1>ROOT</h1>
+  //       {/* <Navigation /> */}
+  //       <Outlet />
+  //       <ScrollRestoration />
+  //       <Scripts />
+  // <LiveReload />
+  //     </body>
+  //   </html>
+  // );
+
   return (
-    <html lang="en" className="h-full bg-gray-100">
+    <html lang="en">
       <head>
-        <Meta />
         <Links />
+        <Meta />
       </head>
-      <body className="h-full">
-        {/* <Navigation /> */}
+      <body>
+        {/* <h1>test</h1> */}
         <Outlet />
         <ScrollRestoration />
         <Scripts />
