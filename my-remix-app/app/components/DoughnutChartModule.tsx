@@ -1,50 +1,13 @@
-// import { createStyles, Text } from "@mantine/core";
 import DoughnutChart from './DoughnutWidget';
-// import {
-//   WidgetCard,
-//   WidgetCardContent,
-//   WidgetCardHeader,
-// } from "./widgets/widget-card";
-
-// const useStyles = createStyles((theme) => ({
-//   doughnutWrapper: {
-//     height: "220px",
-//     width: "100%",
-//     position: "absolute",
-//     left: "50%",
-//     top: "50%",
-//     transform: "translate(-50%, -50%)",
-//     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-//       position: "relative",
-//       left: "0",
-//       top: "0",
-//       transform: "unset",
-//       width: "100%",
-//       marginTop: "0px",
-//       marginBottom: "25px",
-//     },
-//     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-//       marginTop: "25px",
-//     },
-//   },
-// }));
-
-type TDoughnutChartModuleProps = {
-  title: string;
-  data: number[];
-  labels: string[];
-  currency?: string;
-};
+import type { TDoughnutChartModuleProps } from '~/utils/types';
 
 function DoughnutChartModule({
   title,
-  data,
-  labels,
+  myData,
   currency = 'EUR',
 }: TDoughnutChartModuleProps) {
-  // const { classes } = useStyles();
   return (
-    <div className="border-2 border-solid rounded-md bg-tertiary border-tertiary">
+    <div className="relative overflow-hidden border-2 border-solid rounded-md bg-tertiary border-tertiary">
       <div className="px-4 py-2 sm:px-6 lg:px-8 sm:flex sm:items-center rounded-t-md">
         <div className="py-2 sm:flex-auto text-textPrimary">
           <h1 className="text-base font-semibold leading-6 text-gray-200">
@@ -52,13 +15,25 @@ function DoughnutChartModule({
           </h1>
         </div>
       </div>
-      <div className="flow-root ">
-        <DoughnutChart
-          data={data}
-          labels={labels}
-          cutout={40}
-          currency={currency}
-        />
+      <div className="w-2/3">
+        <DoughnutChart data={myData} cutout={80} currency={currency} />
+      </div>
+      <div className="absolute right-0 w-1/3 h-full py-2 top-14 bg-secondary">
+        <ul>
+          {myData.map((item, index) => (
+            <li key={index} className="flex items-center justify-start pt-2">
+              <img
+                className="w-5 h-5 mr-2 rounded-full"
+                src={item.imageSrc}
+                alt=""
+              />
+              <div className="flex items-center justify-between w-full pr-6 text-textSecondary">
+                <p>{item.label}</p>
+                <p> {item.data.ratio}%</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

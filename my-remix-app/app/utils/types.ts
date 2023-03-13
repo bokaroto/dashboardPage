@@ -94,3 +94,39 @@ export type TSingleTransactionHistoryCard = {
   currency: string;
   money: string | number;
 };
+
+export type TDoughnutChartModuleProps = {
+  title: string;
+  currency: string;
+  myData: Array<{
+    label: string;
+    data: {
+      balance: number;
+      value: number;
+      ratio: number;
+    };
+    imageSrc: string;
+  }>;
+};
+
+export type TDoughnutWidgetProps = {
+  data: Array<{
+    label: string;
+    data: {
+      balance: number;
+      value: number;
+      ratio: number;
+    };
+    imageSrc: string;
+  }>;
+  cutout?: number;
+  position?:
+    | 'right'
+    | 'left'
+    | 'top'
+    | 'bottom'
+    | 'center'
+    | 'chartArea'
+    | undefined;
+  currency?: string;
+};

@@ -222,3 +222,68 @@ export const transactionHistoryData = [
     money: '0.577',
   },
 ];
+
+export const doughnutData = [
+  {
+    label: 'Test 1',
+    data: {
+      balance: 16,
+      value: 2,
+      ratio: 34,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    label: 'Test 2',
+    data: {
+      balance: 33,
+      value: 44,
+      ratio: 25,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    label: 'Test 3',
+    data: {
+      balance: 13,
+      value: 54,
+      ratio: 56,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    label: 'Test 4',
+    data: {
+      balance: 3,
+      value: 4,
+      ratio: 12,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    label: 'Test 5',
+    data: {
+      balance: 63,
+      value: 234,
+      ratio: 34,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    label: 'Test 6',
+    data: {
+      balance: 6,
+      value: 24,
+      ratio: 66,
+    },
+    imageSrc:
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+];
+
+export const doughnutCurrencyData = 'EUR';

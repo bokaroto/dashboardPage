@@ -17,11 +17,17 @@ import Tabs from '~/components/Tabs';
 import MiniNavigation from '~/components/MiniNavigation';
 import Wallet from '~/components/Wallet';
 import WidgetWraperCard from '~/components/Cards/WidgetCards/WidgetWraperCard';
-import { widgeRewardsData, widgeValueData, widgeTokentData } from '~/data/data';
+import {
+  widgeRewardsData,
+  widgeValueData,
+  widgeTokentData,
+  doughnutData,
+  doughnutCurrencyData,
+} from '~/data/data';
 import NetWorthWidget from '~/components/NetWorthWidget';
 import { NavLink } from '@remix-run/react';
 import TransactionHistory from '~/components/TransactionHistory';
-// import Grafikon from '~/components/Grafikon';
+import Grafikon from '~/components/Grafikon';
 import DoughnutChartModule from '~/components/DoughnutChartModule';
 
 const navigation = [
@@ -42,74 +48,6 @@ const userNavigation = [
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
 ];
-
-const accordianItems = [
-  {
-    id: 1,
-    title: 'Accordion Item 1',
-    content: 'This is the content for Accordion Item 1.',
-  },
-  {
-    id: 2,
-    title: 'Accordion Item 2',
-    content: 'This is the content for Accordion Item 2.',
-  },
-  {
-    id: 3,
-    title: 'Accordion Item 3',
-    content: 'This is the content for Accordion Item 3.',
-  },
-];
-
-const data = [10, 20, 30, 15, 5, 20];
-const labels = [
-  'Label 1',
-  'Label 2',
-  'Label 3',
-  'Label 4',
-  'Label 5',
-  'Label 6',
-];
-const backgroundColors = [
-  '#FF6384',
-  '#36A2EB',
-  '#FFCE56',
-  '#4BC0C0',
-  '#9966FF',
-  '#FF9900',
-];
-const title = 'My Doughnut Chart';
-const label = 'Label';
-const value = 'Value';
-const date = '2022-01-01';
-const country = 'USA';
-
-const labelData = ['test', 'test1', 'test2', 'test3'];
-
-const dataData = [1, 5, 2, 12];
-
-const currencyData = 'EUR';
-
-const dataGrafikon = {
-  labels: ['Red', 'Blue', 'Yellow'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
 
 export default function Example() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -338,24 +276,36 @@ export default function Example() {
             <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <WidgetWraperCard data={widgeValueData} />
             </div>
-            {/* <div className="px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-              <Grafikon />
-            </div> */}
-            {/* <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="w-1/2 pr-4">
                 <DoughnutChartModule
-                  title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
+                  title="Token Allocation"
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
                 />
               </div>
-              <div className="w-1/2 pl-4">
+              <div className="w-1/2">
+                <DoughnutChartModule
+                  title="Protocol Allocation"
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
+                />
+              </div>
+            </div>
+
+            <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="w-1/2 pr-4">
+                <DoughnutChartModule
+                  title="Chain Allocation"
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
+                />
+              </div>
+              <div className="w-1/2">
                 <DoughnutChartModule
                   title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
                 />
               </div>
             </div>
@@ -364,39 +314,18 @@ export default function Example() {
               <div className="w-1/2 pr-4">
                 <DoughnutChartModule
                   title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
                 />
               </div>
-              <div className="w-1/2 pl-4">
+              <div className="w-1/2">
                 <DoughnutChartModule
                   title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
+                  currency={doughnutCurrencyData}
+                  myData={doughnutData}
                 />
               </div>
             </div>
-
-            <div className="flex px-4 pt-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-              <div className="w-1/2 pr-4">
-                <DoughnutChartModule
-                  title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
-                />
-              </div>
-              <div className="w-1/2 pl-4">
-                <DoughnutChartModule
-                  title="Sales per Brand"
-                  labels={labelData}
-                  data={dataData}
-                  currency={currencyData}
-                />
-              </div>
-            </div> */}
 
             <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <TransactionHistory />
